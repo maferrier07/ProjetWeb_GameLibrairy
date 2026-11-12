@@ -2,7 +2,7 @@
 Le but est de créer une bibliothèque de jeux vidéo comme Steam ou Epic Games. On pourra donc ajouter des jeux, les supprimer ou les trier par éditeurs ou genre. 
 
 ## Membres du groupe
-- Gabin Demas
+- Emily Demas
 - Marco Ferrier
 - Axel Benoit
 - Eden Boufferet
