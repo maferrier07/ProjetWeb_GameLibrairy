@@ -15,25 +15,27 @@ Le but est de créer une bibliothèque de jeux vidéo comme Steam ou Epic Games.
 - SQlite : base de données
 
 ## Entites
-- Jeu (Editeur, Genre, Nom, PEGI)
+- Jeu (Editeur, Date de Sortie, Tag, Nom, PEGI, note)
 - Editeur (Annee de création, Nationalité)
+- Tag (Caractéristique)
 
 ## Relations
 - Un jeu a un seul éditeur
 - Un jeu a un seul PEGI
 - Un éditeur a une nationalité
 - Un éditeur à plusieurs jeux
-- Un jeu peut avoir plusieurs genres
+- Un jeu peut avoir plusieurs tags
+- Un tag peut être associés a plusieurs jeux
 
 ## Entites A et B
 
 ## Contenu du seed
 Jeu : 
-    - Super Smash Bros Melee (Nintendo, Combat, 3)
-    - Modern Warfare 4 (Activision, Combat, 18)
+    - Super Smash Bros Melee (Nintendo, Combat, Multijoueur, 3)
+    - Modern Warfare 4 (Activision, Combat, Multijoueur, 18)
     - GTA 6 (Rockstar Games, Action-aventure, 18)
-    - Fortnite (Epic Games, Battle-royal, 12)
-    - Minecraft (Mojang, Aventure, 3)
+    - Fortnite (Epic Games, Battle-royal, Multijoueur, 12)
+    - Minecraft (Mojang, Aventure, Multijoueur, 3)
 
 Editeur : 
     - Rockstar Games (1998, Etats-Unis)
@@ -42,4 +44,13 @@ Editeur :
     - Epic Games (1991, Etats-Unis)
     - Mojang (2009, Suède)
 
+Tag :
+    - Combat
+    - Multijoueur
+    - Action-aventure
+    - Battle-royal
+    - Aventure
+
 ## Ce qui est mis en avant sur la page d'accueil
+
+Les jeux sont mis en avant en fonction de la note que vous leurs attribués, les jeux les mieux notés apparaissent sur votre page d'acceuil en fonction de leurs date d'ajout.
