@@ -30,8 +30,7 @@ Le but est de créer une bibliothèque de jeux vidéo comme Steam ou Epic Games.
 ## Entites A et B
 Entité A : les jeux vidéos
 Entité B : les éditeurs
-
-Les tags sont figés. 
+Entité C : les tags (on ne part pas avec une liste figé de tag. De nouveaux pourraient émerger) 
 
 ## Contenu du seed
 Jeu : 
