@@ -22,6 +22,7 @@ Le but est de créer une bibliothèque de jeux vidéo comme Steam ou Epic Games.
 ## Relations
 - Un jeu a un seul éditeur
 - Un jeu a un seul PEGI
+- Un jeu n'a qu'une seule note
 - Un éditeur a une nationalité
 - Un éditeur à plusieurs jeux
 - Un jeu peut avoir plusieurs tags
