@@ -19,6 +19,7 @@ Le but est de créer une bibliothèque de jeux vidéo comme Steam ou Epic Games.
 - Jeu (Editeur, Date de Sortie, Tag, Nom, PEGI, noteSur20)
 - Editeur (Annee de création, Nationalité)
 - Tag (Caractéristique)
+- Nationalité (Pays)
 
 ## Relations
 - Un jeu a un seul éditeur
@@ -60,3 +61,5 @@ Tag :
 ## Ce qui est mis en avant sur la page d'accueil
 
 Les jeux sont mis en avant en fonction de la note que vous leurs attribués, les jeux les mieux notés apparaissent sur votre page d'acceuil en fonction de leurs date d'ajout.
+
+Proposer de push certains jeux en plus des jeux par défaut présent sur la page d'accueil. 
