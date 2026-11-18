@@ -12,7 +12,8 @@ Le but est de créer une bibliothèque de jeux vidéo comme Steam ou Epic Games.
 - NodeJS : runtime javascript permettant d'éviter le navigateur
 - Express : permet la création et la gestion d'un serveur web en JavaScript
 - Drizzle : ORM permettant de discuter avec la base de données
-- SQlite : base de données
+- SQlite : base de donnéesù
+- Handlebars : template
 
 ## Entites
 - Jeu (Editeur, Date de Sortie, Tag, Nom, PEGI, noteSur20)
