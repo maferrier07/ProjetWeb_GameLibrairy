@@ -4,7 +4,6 @@ const { date } = require("drizzle-orm/mysql-core");
 const { sqliteTable, integer, text } = require("drizzle-orm/sqlite-core");
 
 const jeu = sqliteTable("games", {
-<<<<<<< HEAD
     id : integer("ID").primaryKey({autoIncrement:true}),
     editor : integer("IDeditor").notNull(),
     releaseDate : date("releaseDate"),
@@ -31,15 +30,3 @@ const nationality = sqliteTable("nationalities", {
 });
 
 module.exports = { jeu, editor, tag, nationality };
-=======
-    id : integer("id").primaryKey({autoIncrement:true}),
-    IDeditor : integer("id").notNull(),
-    releaseDate : date(),
-    IDtag : integer("id").notNull(),
-    name : char("gameName"), 
-    PEGI : integer(),
-    note:integer("on20")
-});
-
-module.exports = { jeu };
->>>>>>> d9457fb4e3752fc9ff376afe5a8c69d2ba7b5d64
