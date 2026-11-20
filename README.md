@@ -25,11 +25,12 @@ Ce qu'il faut installer sur la machine, avec les versions (ex : Node.js 22, Pyth
 Les commandes exactes, dans l'ordre, à exécuter depuis un clone vierge du dépôt :
 
 ```bash
-git clone <url-du-depot>
-cd <dossier>
+git clone [<url-du-depot>](https://github.com/maferrier07/ProjetWeb_GameLibrairy.git)
+cd ./ProjetWeb_GameLibrairy
 # installation des dépendances
-# création de la base de données / migrations / seed
+npm run initDB
 # démarrage
+npm start
 ```
 
 URL de l'application une fois lancée : http://localhost:XXXX
