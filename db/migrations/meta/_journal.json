@@ -1,0 +1,20 @@
+{
+  "version": "7",
+  "dialect": "sqlite",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "6",
+      "when": 1795011109876,
+      "tag": "0000_create_game_librairy_table",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "6",
+      "when": 1795179723040,
+      "tag": "0001_create_game_librairy_table",
+      "breakpoints": true
+    }
+  ]
+}

@@ -3,11 +3,10 @@ const { char } = require("drizzle-orm/mysql-core");
 const { date } = require("drizzle-orm/mysql-core");
 const { sqliteTable, integer, text } = require("drizzle-orm/sqlite-core");
 
-const jeu = sqliteTable("games", {
+const game = sqliteTable("games", {
     id : integer("ID").primaryKey({autoIncrement:true}),
-    editor : integer("IDeditor").notNull(),
+    editor : integer("IDeditor").notNull().references(() => editor.id),
     releaseDate : date("releaseDate"),
-    tag : integer("IDtag").notNull(),
     name : char("gameName"), 
     PEGI : integer("PEGI"),
     mark : integer("markOn20")
@@ -16,7 +15,7 @@ const jeu = sqliteTable("games", {
 const editor = sqliteTable("editors", {
     id : integer("id").primaryKey({autoIncrement:true}),
     birthDate : date("birthDate"),
-    nationality : integer("IDnationality")
+    nationality : integer("IDnationality").references(() => nationality.id)
 });
 
 const tag = sqliteTable("tags", {
@@ -29,4 +28,10 @@ const nationality = sqliteTable("nationalities", {
     country : char("countryName")
 });
 
-module.exports = { jeu, editor, tag, nationality };
+const gameTags = sqliteTable("game_tags", {
+    id : integer("id").primaryKey({autoIncrement:true}),
+    gameID : integer("gameID").references(() => game.id),
+    tagID : integer("tagID").references(() => tag.id)
+});
+
+module.exports = { game, editor, tag, nationality, gameTags };
