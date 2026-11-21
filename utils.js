@@ -58,10 +58,19 @@ async function ImgToUrl(imagePath) {
     return `data:${mime};base64,${buffer.toString("base64")}`;
 }
 
-function GetIdNationality(eltVar) {
+function GetNationalityID(eltVar) {
     for (let i = 0; i < countries.length; i++) {
         if (countries[i] === eltVar) {
             return i + 1;
+        }
+    }
+    return 0;
+}
+
+function GetTagsID(listTag, tag) {
+    for (let i = 0; i < listTag.length; i++) {
+        if (listTag[i].feature === tag) {
+            return listTag[i].id;
         }
     }
     return 0;
@@ -76,4 +85,4 @@ function getEditorID(listEditor, editor) {
     return 0;
 }
 
-module.exports = { countries, ImgToUrl, GetIdNationality, getEditorID };
+module.exports = { countries, ImgToUrl, GetNationalityID, GetTagsID, getEditorID };
