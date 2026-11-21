@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
 html {
     height: 100%;
     margin: 0px;
@@ -8,8 +10,12 @@ body {
     color: white;
     background-image: radial-gradient(circle at 50% 20%, rgb(40, 72, 106), rgb(15, 25, 36));
     margin: 0px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
+/* HEADER */
 h2 {
     margin: 0px;
 }
@@ -23,9 +29,10 @@ h2 {
 }
 
 .header_nav {
-    height: 100%;
     display: flex;
     align-items: center; /* centrage vertical */
+    border-bottom: 1px solid rgb(32, 39, 48);
+    padding: 27px 0px 3px 0px; /* ajout de padding pour l'espacement */
 }
 
 .header_nav ol {
@@ -40,18 +47,52 @@ h2 {
 }
 
 .header_nav_elt a {
+    font-family: 'Montserrat', sans-serif;
     font-size: 19px;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 4px;
+    transition: color 0.2s ease-out;
+}
+
+.header_nav_elt a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background-color: rgb(26, 159, 255);
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.2s ease-out;
 }
 
 .header_nav_elt a:hover {
-    animation: 0.5s ease-out 0s 1 header_nav_elt_hover;
+    color: rgb(26, 159, 255);
 }
 
-@keyframes header_nav_elt_hover {
-    from {
-        color: rgb(255, 255, 255);
-    }
-    to {
-        color: rgb(26, 159, 255);
-    }
+.header_nav_elt a:hover::after {
+    transform: scaleX(1);
+}
+
+/* MAIN */
+.title {
+    font-family: 'Google Sans', sans-serif;
+    font-size: 60px;
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+/* FOOTER */
+footer {
+    margin-top: auto;
+    flex-shrink: 0;
+    background-color: rgb(23, 29, 37);
+    height: 50px;
+    border-top: 1px solid rgb(32, 39, 48);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

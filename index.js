@@ -3,7 +3,7 @@ const app = express();
 const PORT = 8080;
 
 const hbs = require("hbs");
-const path = require("path")
+const path = require("path");
 
 // Configuration de Handlebars pour Express
 app.set("view engine", "hbs"); // On définit le moteur de template que Express va utiliser
@@ -17,5 +17,6 @@ app.get("/", async (req, res) => {
 });
 
 app.listen(PORT, () => {
-    console.log('Server is runnig on port : ${PORT}')
+    console.log('Server is running on port : ${PORT}')
 });
+
