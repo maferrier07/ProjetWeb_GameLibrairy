@@ -1,0 +1,57 @@
+html {
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    color: white;
+    background-image: radial-gradient(circle at 50% 20%, rgb(40, 72, 106), rgb(15, 25, 36));
+    margin: 0px;
+}
+
+h2 {
+    margin: 0px;
+}
+
+.header {
+    background-color: rgb(23, 29, 37);
+    height: 80px;
+    border-bottom: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: rgb(32, 39, 48);
+}
+
+.header_nav {
+    height: 100%;
+    display: flex;
+    align-items: center; /* centrage vertical */
+}
+
+.header_nav ol {
+    list-style-type: none;
+    padding-left: 0;
+    margin: 0 0 0 20px; /* remplace margin-top et margin-left */
+}
+
+.header_nav_elt {
+    display: inline-block;
+    padding-right: 15px;
+}
+
+.header_nav_elt a {
+    font-size: 19px;
+}
+
+.header_nav_elt a:hover {
+    animation: 0.5s ease-out 0s 1 header_nav_elt_hover;
+}
+
+@keyframes header_nav_elt_hover {
+    from {
+        color: rgb(255, 255, 255);
+    }
+    to {
+        color: rgb(26, 159, 255);
+    }
+}
