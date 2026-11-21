@@ -28,6 +28,7 @@ Les commandes exactes, dans l'ordre, à exécuter depuis un clone vierge du dép
 git clone [<url-du-depot>](https://github.com/maferrier07/ProjetWeb_GameLibrairy.git)
 cd ./ProjetWeb_GameLibrairy
 # installation des dépendances
+npm run initProject
 npm run initDB
 # démarrage
 npm start
