@@ -12,11 +12,19 @@ hbs.registerPartials(path.join(__dirname, "views", "partials"));
 
 app.use(express.static("public"));
 
+const db = require("./db");
+const { gamesTable } = require("./db/schema");
+const { desc } = require("drizzle-orm");
+
 app.get("/", async (req, res) => {
-    res.render("index");
+    const FiveBestRateGame = await db
+        .select()
+        .from(gamesTable)
+        .orderBy(desc(gamesTable.mark))
+        .limit(5);
+    res.render("index", { FiveBestRateGame });
 });
 
 app.listen(PORT, () => {
-    console.log('Server is running on port : ${PORT}')
+    console.log(`Server is running on port : ${PORT}`);
 });
-
