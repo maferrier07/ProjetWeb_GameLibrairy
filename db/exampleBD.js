@@ -1,77 +1,69 @@
 const db = require("./index");
-const { gamesTable, nationality } = require("./schema");
+const { gamesTable, nationality, editorsTable, tagsTable } = require("./schema");
+const { countries, ImgToUrl, GetIdNationality, getEditorID } = require("../utils");
 
-const countries = [
-    "Afghanistan", "Albania", "Algeria", "Andorra", "Angola",
-    "Antigua and Barbuda", "Argentina", "Armenia", "Australia", "Austria",
-    "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados",
-    "Belarus", "Belgium", "Belize", "Benin", "Bhutan",
-    "Bolivia", "Bosnia and Herzegovina", "Botswana", "Brazil", "Brunei",
-    "Bulgaria", "Burkina Faso", "Burundi", "Cabo Verde", "Cambodia",
-    "Cameroon", "Canada", "Central African Republic", "Chad", "Chile",
-    "China", "Colombia", "Comoros", "Congo", "Costa Rica",
-    "Côte d'Ivoire", "Croatia", "Cuba", "Cyprus", "Czechia",
-    "Democratic Republic of the Congo", "Denmark", "Djibouti", "Dominica", "Dominican Republic",
-    "Ecuador", "Egypt", "El Salvador", "Equatorial Guinea", "Eritrea",
-    "Estonia", "Eswatini", "Ethiopia", "Fiji", "Finland",
-    "France", "Gabon", "Gambia", "Georgia", "Germany",
-    "Ghana", "Greece", "Grenada", "Guatemala", "Guinea",
-    "Guinea-Bissau", "Guyana", "Haiti", "Honduras", "Hungary",
-    "Iceland", "India", "Indonesia", "Iran", "Iraq",
-    "Ireland", "Israel", "Italy", "Jamaica", "Japan",
-    "Jordan", "Kazakhstan", "Kenya", "Kiribati", "Kuwait",
-    "Kyrgyzstan", "Laos", "Latvia", "Lebanon", "Lesotho",
-    "Liberia", "Libya", "Liechtenstein", "Lithuania", "Luxembourg",
-    "Madagascar", "Malawi", "Malaysia", "Maldives", "Mali",
-    "Malta", "Marshall Islands", "Mauritania", "Mauritius", "Mexico",
-    "Micronesia", "Moldova", "Monaco", "Mongolia", "Montenegro",
-    "Morocco", "Mozambique", "Myanmar", "Namibia", "Nauru",
-    "Nepal", "Netherlands", "New Zealand", "Nicaragua", "Niger",
-    "Nigeria", "North Korea", "North Macedonia", "Norway", "Oman",
-    "Pakistan", "Palau", "Palestine", "Panama", "Papua New Guinea",
-    "Paraguay", "Peru", "Philippines", "Poland", "Portugal",
-    "Qatar", "Romania", "Russia", "Rwanda", "Saint Kitts and Nevis",
-    "Saint Lucia", "Saint Vincent and the Grenadines", "Samoa", "San Marino", "Sao Tome and Principe",
-    "Saudi Arabia", "Senegal", "Serbia", "Seychelles", "Sierra Leone",
-    "Singapore", "Slovakia", "Slovenia", "Solomon Islands", "Somalia",
-    "South Africa", "South Korea", "South Sudan", "Spain", "Sri Lanka",
-    "Sudan", "Suriname", "Sweden", "Switzerland", "Syria",
-    "Tajikistan", "Tanzania", "Thailand", "Timor-Leste", "Togo",
-    "Tonga", "Trinidad and Tobago", "Tunisia", "Türkiye", "Turkmenistan",
-    "Tuvalu", "Uganda", "Ukraine", "United Arab Emirates", "United Kingdom",
-    "United States", "Uruguay", "Uzbekistan", "Vanuatu", "Vatican City",
-    "Venezuela", "Vietnam", "Yemen", "Zambia", "Zimbabwe"
+const editors = [
+    { birthdate : "1889", name : "Nintendo", nationality : GetIdNationality("Japan") },
+    { birthdate : "1998", name : "Rockstar", nationality : GetIdNationality("United States") },
+    { birthdate : "1979", name : "Activision", nationality : GetIdNationality("United States") },
+    { birthdate : "2009", name : "Mojang", nationality : GetIdNationality("Sweden") },
+    { birthdate : "1991", name : "Epic Games", nationality : GetIdNationality("United States") }
+
 ];
 
 const games = [
-    { editor : 0, releaseDate : "21/11/2001", name : "Super Smash Bros Melee", PEGI : 3, mark : 18},
-    { editor : 1, releaseDate : "19/11/2026", name : "GTA VI", PEGI : 18, mark : 20},
-    { editor : 2, releaseDate : "23/10/2026", name : "Call of Duty Modern Warfare 4", PEGI : 18, mark : 13},
-    { editor : 3, releaseDate : "17/05/2011", name : "Minecraft", PEGI : 3, mark : 17},
-    { editor : 4, releaseDate : "25/08/2017", name : "Fortnite", PEGI :16, mark : 15}
+    { editor : "Nintendo", releaseDate : "21/11/2001", name : "Super Smash Bros Melee", PEGI : 3, mark : 18, imagePath : "public/image/ssbm_logo.png"},
+    { editor : "Rockstar", releaseDate : "19/11/2026", name : "GTA VI", PEGI : 18, mark : 20, imagePath : "public/image/gta6_logo.png"},
+    { editor : "Activision", releaseDate : "23/10/2026", name : "Call of Duty Modern Warfare 4", PEGI : 18, mark : 13, imagePath : "public/image/codmw4_logo.png"},
+    { editor : "Mojang", releaseDate : "17/05/2011", name : "Minecraft", PEGI : 3, mark : 17, imagePath : "public/image/minecraft_logo.png"},
+    { editor : "Epic Games", releaseDate : "25/08/2017", name : "Fortnite", PEGI :16, mark : 15, imagePath : "public/image/fortnite_logo.png"}
+];
+
+const tags = [
+    "Combat", "Multijoueur", "Action-Aventure", "Battle Royal", "Aventure"
 ];
 
 async function seedNationalities() {
     const rows = countries.map((country) => ({ country }));
     await db.insert(nationality).values(rows).onConflictDoNothing();
-}
+};
+
+let editorsID = [];
+async function seedEditors() {
+    for (const editor of editors) {
+        const [newEditor] = await db.insert(editorsTable).values(editor).onConflictDoNothing().returning();
+        editorsID.push(newEditor);
+    }
+};
 
 async function seedGames() {
-    for (const game of games) {
-        await db.insert(gamesTable).values(game).onConflictDoNothing();
+    for (const { imagePath, editor, ...game } of games) {
+        const image = await ImgToUrl(imagePath);
+        const editorID = getEditorID(editorsID, editor);
+        await db.insert(gamesTable).values({ editorID, ...game, image }).onConflictDoNothing();
     }
-}
+};
 
-seedNationalities()
+async function seedTags() {
+    const rows = tags.map((feature) => ({ feature }));
+    await db.insert(tagsTable).values(rows).onConflictDoNothing();
+};
+
+async function main() {
+    await db.delete(gamesTable);
+    await db.delete(editorsTable);
+
+    await seedNationalities();
+    await seedEditors();
+    await seedGames();
+    await seedTags();
+
+    
+};
+
+main()
     .then(() => process.exit(0))
     .catch((err) => {
-        console.error("err");
-        process.exit(1);
-    });
-
-seedGames()
-    .then(() => process.exit(0))
-    .catch((err) => {
-        console.error("err");
+        console.error(err);
         process.exit(1);
     });

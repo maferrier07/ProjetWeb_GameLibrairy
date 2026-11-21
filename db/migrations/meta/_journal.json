@@ -22,6 +22,27 @@
       "when": 1795276619366,
       "tag": "0002_addNationalityUnique",
       "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "6",
+      "when": 1795280012612,
+      "tag": "0003_addImageToGame",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "6",
+      "when": 1795283237690,
+      "tag": "0004_addEditorName",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "6",
+      "when": 1795283681272,
+      "tag": "0005_setTagFeatureToUnique",
+      "breakpoints": true
     }
   ]
 }

@@ -1,0 +1,1 @@
+CREATE UNIQUE INDEX `tags_featureName_unique` ON `tags` (`featureName`);

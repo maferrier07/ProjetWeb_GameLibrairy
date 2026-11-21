@@ -5,7 +5,7 @@ const { sqliteTable, integer, text } = require("drizzle-orm/sqlite-core");
 
 const gamesTable = sqliteTable("games", {
     id : integer("ID").primaryKey({autoIncrement:true}),
-    editor : integer("IDeditor").notNull().references(() => editor.id),
+    editorID : integer("IDeditor").notNull().references(() => editorsTable.id),
     releaseDate : date("releaseDate"),
     name : char("gameName"), 
     PEGI : integer("PEGI"),
@@ -13,15 +13,16 @@ const gamesTable = sqliteTable("games", {
     image : char("gameImage")
 });
 
-const editor = sqliteTable("editors", {
+const editorsTable = sqliteTable("editors", {
     id : integer("id").primaryKey({autoIncrement:true}),
+    name : char("editorName").unique(),
     birthDate : date("birthDate"),
     nationality : integer("IDnationality").references(() => nationality.id)
 });
 
-const tag = sqliteTable("tags", {
+const tagsTable = sqliteTable("tags", {
     id : integer("id").primaryKey({autoIncrement:true}),
-    feature : char("featureName")
+    feature : char("featureName").unique()
 });
 
 const nationality = sqliteTable("nationalities", {
@@ -31,8 +32,8 @@ const nationality = sqliteTable("nationalities", {
 
 const gameTags = sqliteTable("game_tags", {
     id : integer("id").primaryKey({autoIncrement:true}),
-    gameID : integer("gameID").references(() => games.id),
-    tagID : integer("tagID").references(() => tag.id)
+    gameID : integer("gameID").references(() => gamesTable.id),
+    tagID : integer("tagID").references(() => tagsTable.id)
 });
 
-module.exports = { games, editor, tag, nationality, gameTags };
+module.exports = { gamesTable, editorsTable, tagsTable, nationality, gameTags };
