@@ -16,7 +16,7 @@ const games = [
     { editor : "Rockstar", releaseDate : "19/11/2026", name : "GTA VI", PEGI : 18, mark : 20, imagePath : "public/image/gta6_logo.png", tags : ["Action-Aventure"]},
     { editor : "Activision", releaseDate : "23/10/2026", name : "Call of Duty Modern Warfare 4", PEGI : 18, mark : 13, imagePath : "public/image/codmw4_logo.png", tags : ["Combat"]},
     { editor : "Mojang", releaseDate : "17/05/2011", name : "Minecraft", PEGI : 3, mark : 17, imagePath : "public/image/minecraft_logo.png", tags : ["Aventure", "Multijoueur"]},
-    { editor : "Epic Games", releaseDate : "25/08/2017", name : "Fortnite", PEGI :16, mark : 15, imagePath : "public/image/fortnite_logo.png", tags : ["Battle Royal", "Multijoueur"]}
+    { editor : "Epic Games", releaseDate : "25/08/2017", name : "Fortnite", PEGI :16, mark : 14, imagePath : "public/image/fortnite_logo.png", tags : ["Battle Royal", "Multijoueur"]}
 ];
 
 const tags = [

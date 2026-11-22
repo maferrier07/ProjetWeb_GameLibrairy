@@ -136,7 +136,7 @@ h2 {
     width: 420px;
     height: 420px;
     object-fit: contain;
-    transition: transform 0.5s ease, opacity 0.5s ease;
+    transition: transform 0.5s ease, opacity 0.5s ease, filter 0.3s ease;
     transform: translate(-50%, -50%);
     opacity: 0;
     pointer-events: none;
@@ -146,6 +146,37 @@ h2 {
     transform: translate(-50%, -50%) scale(1);
     opacity: 1;
     z-index: 3;
+    pointer-events: auto;
+}
+
+.slide.current:hover {
+    transform: translate(-50%, -50%) scale(1.05);
+    filter: brightness(0.3);
+}
+
+.gameTitle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+    width: 60%;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 40px;
+    font-weight: 600;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 4;
+    pointer-events: none;
+}
+
+.slide.current:hover + .gameTitle {
+    opacity: 1;
+}
+
+.slideImgContainer {
+    color:#fff;
 }
 
 .slide.prevImg {
@@ -180,10 +211,17 @@ h2 {
       padding: 10px 15px;
       cursor: pointer;
       font-size: 18px;
+      z-index: 60;
+    }
+
+.slider button:hover {
+      background: rgba(0, 0, 0, 0.7);
     }
 
 .prev { left: 20%; }
 .next { right: 20%; }
+
+
 
 /* FOOTER */
 footer {

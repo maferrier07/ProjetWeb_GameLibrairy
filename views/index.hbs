@@ -5,12 +5,25 @@
 
     <div class="slider_img">
         {{#each FiveBestRateGame}}
-            <img class="slide" src="{{this.image}}" alt="{{this.name}}" />
+        <a class="slideImgContainer" href="/games/{{this.id}}">
+            <img class="slide" src="{{this.image}}" alt="{{this.name}}"/>
+            <p class="gameTitle">{{this.name}}</p>
+        </a>
         {{/each}}
     </div>
 
     <button class="next">&#10095;</button>
 </div>
+
+<h1 class="title">GAMES</h1>
+
+<p>
+    idshfiujh
+    sdifuisqdhfik
+    sikidqhfhqsidf
+    sdifisdhfiqs
+    oushdfiuhqisodf
+</p>
 
 <script>
     let idInterval;
