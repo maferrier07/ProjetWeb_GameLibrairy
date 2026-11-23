@@ -17,11 +17,18 @@
 
 <h1 class="title">GAMES</h1>
 
-{{#each FiveBestRateGame}}
-        <a class="slideImgContainer" href="/games/{{this.id}}">
-            <img class="gamesPing" src="{{this.image}}" alt="{{this.name}}"/>
-            <p class="gameTitle">{{this.name}}</p>
-        </a>
-{{/each}}
+<br>
+
+<div class="pinCards">
+    {{#each PinGame}}
+        <div class="pinCard">
+            <a class="slideImgContainer" href="/games/{{this.id}}">
+                <img class="gamesPing" src="{{this.image}}" alt="{{this.name}}" width="150" height="150"/>
+                <p class="gameTitle">{{this.name}}</p>
+            </a>
+        </div>
+    {{/each}}
+</div>
+
 
 <script src="/js/sliderDef.js"></script>

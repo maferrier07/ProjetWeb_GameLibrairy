@@ -1,4 +1,5 @@
 const { sql } = require("drizzle-orm");
+const { boolean } = require("drizzle-orm/gel-core");
 const { char } = require("drizzle-orm/mysql-core");
 const { date } = require("drizzle-orm/mysql-core");
 const { sqliteTable, integer, text } = require("drizzle-orm/sqlite-core");
@@ -11,6 +12,7 @@ const gamesTable = sqliteTable("games", {
     PEGI : integer("PEGI"),
     mark : integer("markOn20"),
     description : char("gameDescription"),
+    isPin: boolean("isPin"),
     image : char("gameImage")
 });
 

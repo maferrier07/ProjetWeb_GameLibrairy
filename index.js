@@ -14,7 +14,7 @@ app.use(express.static("public"));
 
 const db = require("./db");
 const { gamesTable } = require("./db/schema");
-const { desc } = require("drizzle-orm");
+const { desc, eq } = require("drizzle-orm");
 
 app.get("/", async (req, res) => {
     const FiveBestRateGame = await db
@@ -22,7 +22,12 @@ app.get("/", async (req, res) => {
         .from(gamesTable)
         .orderBy(desc(gamesTable.mark))
         .limit(5);
-    res.render("index", { FiveBestRateGame });
+
+    const PinGame = await db
+        .select()
+        .from(gamesTable)
+        .where(eq(gamesTable.isPin, true));
+    res.render("index", { FiveBestRateGame, PinGame });
 });
 
 app.listen(PORT, () => {

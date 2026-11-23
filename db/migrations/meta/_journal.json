@@ -50,6 +50,13 @@
       "when": 1795428182326,
       "tag": "0006_add_gameDescription",
       "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "6",
+      "when": 1795466735052,
+      "tag": "0007_addPinParam",
+      "breakpoints": true
     }
   ]
 }
