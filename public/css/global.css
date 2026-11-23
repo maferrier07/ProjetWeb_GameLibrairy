@@ -9,10 +9,17 @@ html {
 body {
     color: white;
     background-image: radial-gradient(circle at 50% 20%, rgb(40, 72, 106), rgb(15, 25, 36));
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     margin: 0px;
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
+    min-height: 100%;
+}
+
+a {
+    color:#fff;
+    text-decoration: none;
 }
 
 /* HEADER */
@@ -99,7 +106,7 @@ h2 {
 .slider_img {
     position: relative;
     flex: 1;
-    height: 500px;
+    height: 340px;
     overflow: hidden;    
 }
 
@@ -133,10 +140,10 @@ h2 {
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 420px;
-    height: 420px;
+    width: 320px;
+    height: 320px;
     object-fit: contain;
-    transition: transform 0.5s ease, opacity 0.5s ease, filter 0.3s ease;
+    transition: transform 0.5s ease, opacity 0.12s ease, filter 0.3s ease;
     transform: translate(-50%, -50%);
     opacity: 0;
     pointer-events: none;
@@ -151,7 +158,7 @@ h2 {
 
 .slide.current:hover {
     transform: translate(-50%, -50%) scale(1.05);
-    filter: brightness(0.3);
+    filter: brightness(0.2);
 }
 
 .gameTitle {
@@ -160,7 +167,7 @@ h2 {
     left: 50%;
     transform: translate(-50%, -50%);
     margin: 0;
-    width: 60%;
+    width: 40%;
     text-align: center;
     font-family: 'Montserrat', sans-serif;
     font-size: 40px;
@@ -173,10 +180,6 @@ h2 {
 
 .slide.current:hover + .gameTitle {
     opacity: 1;
-}
-
-.slideImgContainer {
-    color:#fff;
 }
 
 .slide.prevImg {
@@ -218,8 +221,8 @@ h2 {
       background: rgba(0, 0, 0, 0.7);
     }
 
-.prev { left: 20%; }
-.next { right: 20%; }
+.prev { left: 100px; }
+.next { right: 100px; }
 
 
 
