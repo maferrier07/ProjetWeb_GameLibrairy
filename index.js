@@ -25,6 +25,15 @@ app.get("/", async (req, res) => {
     res.render("index", { FiveBestRateGame });
 });
 
+//Modification
+const {tagsTable} = require("./db/schema");
+app.get("/modify", async (req, res) => {
+    const allTag = await db
+        .select()
+        .from(tagsTable);
+    res.render("modify", {allTag});
+});
+
 app.listen(PORT, () => {
     console.log(`Server is running on port : ${PORT}`);
 });
