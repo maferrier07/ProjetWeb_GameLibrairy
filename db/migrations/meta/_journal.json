@@ -43,6 +43,13 @@
       "when": 1795283681272,
       "tag": "0005_setTagFeatureToUnique",
       "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "6",
+      "when": 1795428182326,
+      "tag": "0006_add_gameDescription",
+      "breakpoints": true
     }
   ]
 }

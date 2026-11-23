@@ -10,6 +10,7 @@ const gamesTable = sqliteTable("games", {
     name : char("gameName"), 
     PEGI : integer("PEGI"),
     mark : integer("markOn20"),
+    description : char("gameDescription"),
     image : char("gameImage")
 });
 

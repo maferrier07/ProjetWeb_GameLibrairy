@@ -12,11 +12,11 @@ const editors = [
 ];
 
 const games = [
-    { editor : "Nintendo", releaseDate : "21/11/2001", name : "Super Smash Bros Melee", PEGI : 3, mark : 18, imagePath : "public/image/ssbm_logo.png", tags : ["Combat", "Multijoueur"]},
-    { editor : "Rockstar", releaseDate : "19/11/2026", name : "GTA VI", PEGI : 18, mark : 20, imagePath : "public/image/gta6_logo.png", tags : ["Action-Aventure"]},
-    { editor : "Activision", releaseDate : "23/10/2026", name : "Call of Duty Modern Warfare 4", PEGI : 18, mark : 13, imagePath : "public/image/codmw4_logo.png", tags : ["Combat"]},
-    { editor : "Mojang", releaseDate : "17/05/2011", name : "Minecraft", PEGI : 3, mark : 17, imagePath : "public/image/minecraft_logo.png", tags : ["Aventure", "Multijoueur"]},
-    { editor : "Epic Games", releaseDate : "25/08/2017", name : "Fortnite", PEGI :16, mark : 14, imagePath : "public/image/fortnite_logo.png", tags : ["Battle Royal", "Multijoueur"]}
+    { editor : "Nintendo", releaseDate : "21/11/2001", name : "Super Smash Bros Melee", PEGI : 3, mark : 18, imagePath : "public/image/ssbm_logo.png", tags : ["Combat", "Multijoueur"], description : "blablaNintendo"},
+    { editor : "Rockstar", releaseDate : "19/11/2026", name : "GTA VI", PEGI : 18, mark : 20, imagePath : "public/image/gta6_logo.png", tags : ["Action-Aventure"], description : "blablaRockstar"},
+    { editor : "Activision", releaseDate : "23/10/2026", name : "Call of Duty Modern Warfare 4", PEGI : 18, mark : 13, imagePath : "public/image/codmw4_logo.png", tags : ["Combat"], description : "blablaActivision"},
+    { editor : "Mojang", releaseDate : "17/05/2011", name : "Minecraft", PEGI : 3, mark : 17, imagePath : "public/image/minecraft_logo.png", tags : ["Aventure", "Multijoueur"], description : "blablaMojang"},
+    { editor : "Epic Games", releaseDate : "25/08/2017", name : "Fortnite", PEGI :16, mark : 14, imagePath : "public/image/fortnite_logo.png", tags : ["Battle Royal", "Multijoueur"], description : "blablaEpic"}
 ];
 
 const tags = [
@@ -59,6 +59,7 @@ async function seedGames() {
 };
 
 async function main() {
+    await db.delete(gameTags);
     await db.delete(gamesTable);
     await db.delete(editorsTable);
 
