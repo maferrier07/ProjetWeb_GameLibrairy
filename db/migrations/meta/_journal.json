@@ -1,0 +1,62 @@
+{
+  "version": "7",
+  "dialect": "sqlite",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "6",
+      "when": 1795011109876,
+      "tag": "0000_create_game_librairy_table",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "6",
+      "when": 1795179723040,
+      "tag": "0001_create_game_librairy_table",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "6",
+      "when": 1795276619366,
+      "tag": "0002_addNationalityUnique",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "6",
+      "when": 1795280012612,
+      "tag": "0003_addImageToGame",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "6",
+      "when": 1795283237690,
+      "tag": "0004_addEditorName",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "6",
+      "when": 1795283681272,
+      "tag": "0005_setTagFeatureToUnique",
+      "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "6",
+      "when": 1795428182326,
+      "tag": "0006_add_gameDescription",
+      "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "6",
+      "when": 1795466735052,
+      "tag": "0007_addPinParam",
+      "breakpoints": true
+    }
+  ]
+}

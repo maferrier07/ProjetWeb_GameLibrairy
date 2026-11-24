@@ -1,0 +1,51 @@
+let idInterval;
+
+const slides = document.querySelectorAll(".slide");
+const total = slides.length;
+let index = 0;
+// modulo qui gère aussi les nombres négatifs
+function mod(n, m) {
+    return ((n % m) + m) % m;
+}
+
+async function afficherImg() {
+    if (total === 0) return;
+    const half = Math.floor(total / 2);
+    slides.forEach((slide, i) => {
+        // décalage signé le plus court entre cette image et l'image courante
+        const d = mod(i - index + half, total) - half;
+        slide.classList.remove("current", "prevImg", "nextImg", "far-left", "far-right");
+        if (d === 0) slide.classList.add("current");
+        else if (d === -1) slide.classList.add("prevImg");
+        else if (d === 1) slide.classList.add("nextImg");
+        else if (d < 0) slide.classList.add("far-left");
+        else slide.classList.add("far-right");
+    });
+};
+
+document.querySelector(".next").addEventListener("click", () => {
+    index = mod(index + 1, total);
+    afficherImg();
+    clearInterval(idInterval);
+    setTimeout(() => defileAuto(), 6000);
+});
+
+document.querySelector(".prev").addEventListener("click", () => {
+    index = mod(index - 1, total);
+    afficherImg();
+    clearInterval(idInterval);
+    setTimeout(() => defileAuto(), 6000);
+});
+
+function changeImg() {
+    index = mod(index + 1, total);
+    afficherImg();
+};
+
+function defileAuto() {
+    clearInterval(idInterval);
+    idInterval = setInterval(() => changeImg(), 8000)
+};
+
+defileAuto();
+afficherImg();

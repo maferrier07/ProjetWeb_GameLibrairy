@@ -1,0 +1,1 @@
+CREATE UNIQUE INDEX `nationalities_countryName_unique` ON `nationalities` (`countryName`);

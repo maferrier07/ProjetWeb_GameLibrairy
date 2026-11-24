@@ -1,32 +1,42 @@
 const { sql } = require("drizzle-orm");
+const { boolean } = require("drizzle-orm/gel-core");
 const { char } = require("drizzle-orm/mysql-core");
 const { date } = require("drizzle-orm/mysql-core");
 const { sqliteTable, integer, text } = require("drizzle-orm/sqlite-core");
 
-const jeu = sqliteTable("games", {
+const gamesTable = sqliteTable("games", {
     id : integer("ID").primaryKey({autoIncrement:true}),
-    editor : integer("IDeditor").notNull(),
+    editorID : integer("IDeditor").notNull().references(() => editorsTable.id),
     releaseDate : date("releaseDate"),
-    tag : integer("IDtag").notNull(),
     name : char("gameName"), 
     PEGI : integer("PEGI"),
-    mark : integer("markOn20")
+    mark : integer("markOn20"),
+    description : char("gameDescription"),
+    isPin: boolean("isPin"),
+    image : char("gameImage")
 });
 
-const editor = sqliteTable("editors", {
+const editorsTable = sqliteTable("editors", {
     id : integer("id").primaryKey({autoIncrement:true}),
+    name : char("editorName").unique(),
     birthDate : date("birthDate"),
-    nationality : integer("IDnationality")
+    nationality : integer("IDnationality").references(() => nationality.id)
 });
 
-const tag = sqliteTable("tags", {
+const tagsTable = sqliteTable("tags", {
     id : integer("id").primaryKey({autoIncrement:true}),
-    feature : char("featureName")
+    feature : char("featureName").unique()
 });
 
 const nationality = sqliteTable("nationalities", {
     id : integer("id").primaryKey({autoIncrement:true}),
-    country : char("countryName")
+    country : char("countryName").unique()
 });
 
-module.exports = { jeu, editor, tag, nationality };
+const gameTags = sqliteTable("game_tags", {
+    id : integer("id").primaryKey({autoIncrement:true}),
+    gameID : integer("gameID").references(() => gamesTable.id),
+    tagID : integer("tagID").references(() => tagsTable.id)
+});
+
+module.exports = { gamesTable, editorsTable, tagsTable, nationality, gameTags };

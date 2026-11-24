@@ -15,15 +15,25 @@
   "type": "commonjs",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "initProject": "npm init -y && npm install",
+    "initDB": "npx drizzle-kit migrate",
+    "generateDB": "npx drizzle-kit generate --name",
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "testDB": "node ./db/exampleBD.js"
   },
   "dependencies": {
     "@libsql/client": "^0.18.0",
     "dotenv": "^18.0.10",
     "drizzle-orm": "^0.45.4",
-    "express": "^5.3.0"
+    "express": "^5.3.0",
+    "hbs": "^4.4.0"
   },
   "devDependencies": {
+    "drizzle-kit": "^0.31.11",
+    "nodemon": "^3.1.14"
+  },
+  "keywords": []
     "drizzle-kit": "^0.31.11"
   },
   "keywords": []

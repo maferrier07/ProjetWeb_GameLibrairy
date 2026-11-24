@@ -1,0 +1,1 @@
+ALTER TABLE `games` ADD `gameDescription` char;
