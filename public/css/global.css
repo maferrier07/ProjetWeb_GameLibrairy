@@ -229,22 +229,8 @@ h2 {
 .pinCards {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    /*gap: 80px;*/
 }
 
-.pin {
-    z-index: 100;
-    position: absolute;
-    top: -15px;
-    left: -15px;
-    min-width: 40px;
-    height: 40px;
-    background-color: beige;
-    border: 2px solid rgba(255, 255, 255, 0.3);
-    border-radius: 50px;
-    box-shadow: 2px 2px 5px rgb(15, 25, 36);
-    transform: rotate(-45deg);
-}
 
 .pinCard {
     margin-right: 50px;
@@ -261,6 +247,25 @@ h2 {
     border: 1px solid rgba(255, 255, 255, 0.3);
     display: flex;
     justify-content: center;
+}
+
+.pin {
+    z-index: 100;
+    position: relative;
+    top: 0;
+    left: 0;
+    min-width: 40px;
+    height: 40px;
+    background-color: beige;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50px;
+    box-shadow: 2px 2px 5px rgb(15, 25, 36);
+    transform: rotate(-45deg);
+    transition: transform 0.2s ease;
+}
+
+.pin:hover {
+    transform: rotate(-22.5deg) scale(1.02);
 }
 
 .pinGameInfo {
